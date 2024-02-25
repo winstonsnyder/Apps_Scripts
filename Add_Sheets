@@ -1,1 +1,13 @@
+// Add sheets to a workbook based on contents in Col 1
 
+function createNewSheetPerRow() {
+  // Get the data from the sheet called CreateSheets
+  var sheetNames =   SpreadsheetApp.getActive().getSheetByName("CreateSheets").getDataRange().getValues();
+
+  // For each row in the sheet, insert a new sheet and rename it.
+  sheetNames.forEach(function(row) {
+    var sheetName = row[0];
+    var sheet = SpreadsheetApp.getActive().insertSheet();
+    sheet.setName(sheetName);
+  });
+}
